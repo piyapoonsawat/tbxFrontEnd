@@ -1,68 +1,119 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+cat <<END > ~/.aws/config
+[default]
+region=ap-southeast-1
+END
 
-## Available Scripts
 
-In the project directory, you can run:
+npx create-react-app workingDirectory
+cd workingDirectory
+npm start
+cancel
 
-### `npm start`
+git add .
+git commit -m “install_react”
+git branch -M master
+git remote add origin https://github.com/piyapoonsawat/tbxFrontEnd.git
+git push origin master
+SEE changes in Git
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+git add README.md
+git branch -M master
+git remote add origin https://github.com/piyapoonsawat/tbxFrontEnd.git
+git commit -m “install_react”
+git push origin master
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+sudo apt-get install -y nodejs
 
-### `npm test`
+npm install -g npm
+npm install -g @aws-amplify/cli (get 4.27.3)->update to 4.28.1->4.29.0
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+no need "amplify configure"as already set ~/.aws/config
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Goto Amplify console,
+Connect to Git
+User: piyapoonsawat@yahoo.com
+Pass: git1q2w#E$R
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Working with git
+Sample of Command
+// create a new repository
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/piyapoonsawat/tbxReactBackend.git
+git push -u origin master
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// push an existing repository
+git remote add origin https://github.com/piyapoonsawat/tbxReactBackend.git
+git branch -M master
+git push -u origin master
 
-### `npm run eject`
+//Update
+git add .
+git commit -m “Rev1”
+git push origin master
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+// from tutorial 
+git init
+git remote add origin git@github.com:username/reponame.git
+git add .
+git commit -m “initial commit”
+git push origin master
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+amplify init (use AWS profile and select "default" profile)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+check amplify dashboard to see the project
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+amplify add auth (select without social, using email and phone)
 
-## Learn More
+Facebook setup: by getting Domain in Cognito,
+(1) setup in "Settings -> Basic Information"
+(2) in "Facebook Login -> Settings", A valid OAuth redirect URI looks like
+"https://tbxbackend9314f854.auth.ap-southeast-1.amazoncognito.com/oauth2/idpresponse"
+782963109145090
+864e588cceadab268e9b5f95a4bad94d
+email,public_profile
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Google setup: by getting Domain in Cognito,
+(1) create Credential -> Oauth2
+(2) in original "https://tbxbackend9314f854.auth.ap-southeast-1.amazoncognito.com"
+(3) in redirect "/oauth2/idpresponse"
+83368141490-ei2icl3iaeq4vhvtdn6rcjuq6doq9him.apps.googleusercontent.com
+AsIwOX52jKH3t3qYukavSDzF
+profile email openid
 
-### Code Splitting
+ Do you want to use the default authentication and security configuration? Default configuration with Social Provider (Federation)
+ How do you want users to be able to sign in? Email
+ Do you want to configure advanced settings? Yes, I want to make some additional changes.
+ What attributes are required for signing up? Birthdate (This attribute is not supported by Login With Amazon.), Email, Gender (This attribute
+ is not supported by Login With Amazon.), Name
+ Do you want to enable any of the following capabilities? 
+ What domain name prefix do you want to use? tbxbackend5c4c1752-5c4c1752
+ Enter your redirect signin URI: https://www.makeyourq.com/
+? Do you want to add another redirect signin URI No
+ Enter your redirect signout URI: https://www.makeyourq.com/
+? Do you want to add another redirect signout URI No
+ Select the social providers you want to configure for your user pool: Facebook, Google
+ Enter your Facebook App ID for your OAuth flow:  782963109145090
+ Enter your Facebook App Secret for your OAuth flow:  864e588cceadab268e9b5f95a4bad94d
+ Enter your Google Web Client ID for your OAuth flow:  83368141490-ei2icl3iaeq4vhvtdn6rcjuq6doq9him.apps.googleusercontent.com
+ Enter your Google Web Client Secret for your OAuth flow:  AsIwOX52jKH3t3qYukavSDzF
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+amplify add api 
+amplify add storage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+npm install aws-amplify @aws-amplify/ui-react
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+src/index.js
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
+Amplify.configure(config);
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
