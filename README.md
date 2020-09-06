@@ -27,7 +27,8 @@ Connect to Git
 User: piyapoonsawat@yahoo.com
 Pass: git1q2w#E$R
 
-npm install aws-amplify @aws-amplify/ui-react
+npm install @aws-amplify/ui-react
+npm install aws-amplify
 
 src/index.js
 import Amplify from 'aws-amplify';
